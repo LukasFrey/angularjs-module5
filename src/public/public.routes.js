@@ -41,12 +41,27 @@ function routeConfig ($stateProvider) {
         }]
       }
     })
-    .state('myinfo', {
-        url: "/myinfo", 
-        templateUrl: "src/public/myinfo.html"
-    })
     .state('signup', {
         url: "/signup", 
-        templateUrl: "src/public/signup.html"    });
+        templateUrl: "src/public/signup/signup.html"
+    })
+    .state('myinfo', {
+        url: "/myinfo", 
+        templateUrl: "src/public/myinfo/myinfo.html",
+        controller: "MyInfoController",
+        controllerAs: "myInfoCtrl",
+        resolve: {
+            menuItem: ['UserService', 'MenuService', function(UserService, MenuService) {
+                var user = UserService.getUserData();
+                console.log(user);
+                if (user.favorite === undefined) return {};
+
+                var item = MenuService.getMenuItem(user.favorite);
+                console.log(item);
+                
+                return item;
+            }]
+        }
+    });
 }
 })();

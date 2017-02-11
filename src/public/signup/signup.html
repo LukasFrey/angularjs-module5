@@ -1,0 +1,38 @@
+<div class="container">
+  <h2 class="text-center">Sign up</h2>
+  <div class="text-center" ng-controller="SignupController">
+    <form name="signup" method="POST" novalidate>
+        <div class="form-group">
+            <label>First name:</label>
+            <input name="firstname" ng-model="firstname" class="form-control" required ng-minlength="2">
+            <span class="error" ng-show="signup.firstname.$invalid && signup.firstname.$touched">First name is required (minimum length 2)</span>
+        </div>
+        <div class="form-group">
+            <label>Last name:</label>
+            <input name="lastname" ng-model="lastname" class="form-control" required ng-minlength="2">
+            <span class="error" ng-show="signup.lastname.$invalid && signup.lastname.$touched">Last name is required (minimum length 2)</span>
+        </div>
+        <div class="form-group">
+            <label>Email address:</label>
+            <input name="email" type="email" ng-model="email" class="form-control" required>
+            <span class="error" ng-show="signup.email.$invalid && signup.email.$touched">Please enter a valid email address</span>
+        </div>
+        <div class="form-group">
+            <label>Phone number:</label>
+            <input name="phone" type="phone" ng-model="phone" class="form-control" required ng-Minlength="7">
+            <span class="error" ng-show="signup.phone.$invalid && signup.phone.$touched">Please enter a valid phone number (at least 7 digits)</span>            
+        </div>
+        <div class="form-group">
+            <label>Favourite meal:</label>
+            <input name="favorite" ng-model="favorite" class="form-control" required ng-maxlength="3" ng-minlength="1">
+            <span ng-show="menuOk===false">No such menu number exists.</span>
+            <span class="error" ng-show="signup.favorite.$invalid && signup.favorite.$touched">Required, please enter short name of an available menu</span>     
+        </div>
+    
+        <button class="form-control" ng-show="signup.$valid" ng-click="sendForm()">Sign up</button>
+    
+    </form>
+    
+    <div ng-if="formSaved">Your information has been saved.</div>
+  </div>
+</div>

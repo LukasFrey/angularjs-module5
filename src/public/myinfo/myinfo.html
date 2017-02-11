@@ -1,0 +1,22 @@
+<div class="container">
+  <h2 class="text-center">My Info</h2>
+  <div class="text-center">
+    <div ng-if="myInfoCtrl.isRegistered">
+        <table width="100%">
+            <tr>
+                <td width="10%">Name:</td><td width="20%">{{ myInfoCtrl.userInfo.firstname }} {{ myInfoCtrl.userInfo.lastname }}</td>
+                <td rowspan="3"><menu-item menu-item="myInfoCtrl.menuItem"/></td>
+            </tr>
+            <tr>
+                <td nowrap>Email address:</td><td nowrap>{{ myInfoCtrl.userInfo.email }}</td>
+            </tr>
+            <tr>
+                <td nowrap>Phone number:</td><td nowrap>{{ myInfoCtrl.userInfo.phone }}</td>
+            </tr>
+        </table>
+    </div>
+    <div ng-if="myInfoCtrl.isRegistered == false">
+        Not Signed Up Yet. <a ui-sref="signup">Sign up</a>
+    </div>
+  </div>
+</div>
